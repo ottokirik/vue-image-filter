@@ -4,6 +4,7 @@ import { open_image, filter, putImageData } from '@silvia-odwyer/photon';
 export default function useCanvas() {
 	const canvasEl = ref<HTMLCanvasElement | null>(null);
 	const imgEl = new Image();
+	const canvasImgURL = ref('');
 
 	let canvasCtx: CanvasRenderingContext2D | null = null;
 
@@ -51,6 +52,8 @@ export default function useCanvas() {
 			newImageDimension.width,
 			newImageDimension.height,
 		);
+
+		canvasImgURL.value = canvasEl.value.toDataURL('image/png');
 	}
 
 	function filterImage(filterName: string) {
@@ -63,7 +66,9 @@ export default function useCanvas() {
 		}
 
 		putImageData(canvasEl.value, canvasCtx, photonImg);
+
+		canvasImgURL.value = canvasEl.value.toDataURL('image/png');
 	}
 
-	return { canvasEl, loadImage, drawOriginalImage, filterImage };
+	return { canvasEl, canvasImgURL, loadImage, drawOriginalImage, filterImage };
 }
