@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@silvia-odwyer/photon": "^0.3.2",
     "pinia": "^2.1.7",
     "vue": "^3.4.29"
   },
@@ -22,6 +23,8 @@
     "unplugin-fonts": "^1.1.1",
     "unplugin-vue-components": "^0.27.2",
     "vite": "^5.3.1",
+    "vite-plugin-top-level-await": "^1.4.1",
+    "vite-plugin-wasm": "^3.3.0",
     "vue-tsc": "^2.0.21"
   }
 }

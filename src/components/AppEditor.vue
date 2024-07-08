@@ -31,12 +31,17 @@ import useCanvas from '../hooks/use-canvas';
 
 const filters = ['oceanic', 'vintage', 'rosetint'];
 const store = useImageStore();
-const { canvasEl, loadImage } = useCanvas();
+const { canvasEl, loadImage, drawOriginalImage, filterImage } = useCanvas();
 const { reader } = useReader(store.file, () => {
 	if (!reader.result) return;
 
 	const dataURL = reader.result.toString();
 
 	loadImage(dataURL);
+});
+
+store.$subscribe((_, state) => {
+	drawOriginalImage();
+	filterImage(state.filter);
 });
 </script>
